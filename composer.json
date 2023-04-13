@@ -1,6 +1,7 @@
 {
-  "name": "nomiscz/flarum-ext-auth-wechat",
-  "description": "Allow users to log in with WeChat",
+  "name": "hehongyuanlove/flarum-auth-wechat",
+  "description": "Allow users to log in with WeChat /n 允许用户使用微信登录",
+  "version": "2.0.0",
   "keywords": [
     "flarum",
     "authentication",
@@ -16,27 +17,27 @@
   },
   "authors": [
     {
-      "name": "NomisCZ",
-      "email": "nomiscz@outlook.com",
+      "name": "Hehongyuanlove",
+      "email": "1016823618@qq.com",
       "role": "Developer"
     }
   ],
   "autoload": {
     "psr-4": {
-      "NomisCZ\\WeChatAuth\\": "src/"
+      "Hehongyuanlove\\WeChatAuth\\": "src/"
     }
   },
   "extra": {
     "flarum-extension": {
-      "title": "NomisCZ WeChat Login",
+      "title": "WeChat Login",
       "icon": {
         "name": "fab fa-weixin",
         "backgroundColor": "#51c332",
         "color": "#fff"
       }
     },
-    "flagrow": {
-      "discuss": "https://discuss.flarum.org/d/22888-wechat-auth"
+    "suggest": {
+      "nomiscz/flarum-ext-auth-wechat": "Cannot be started simultaneously!"
     }
   }
 }

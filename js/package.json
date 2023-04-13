@@ -1,9 +1,10 @@
 {
-  "name": "@nomiscz/flarum-ext-auth-wechat",
+  "name": "@hehongyuanlove/flarum-auth-wechat",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
     "flarum-webpack-config": "^0.1.0-beta.10",
+    "mithril": "^2.0.4",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },

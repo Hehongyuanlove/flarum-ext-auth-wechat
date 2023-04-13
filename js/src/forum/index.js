@@ -12,7 +12,7 @@ import LogInButtons from 'flarum/components/LogInButtons';
 import LogInButton from 'flarum/components/LogInButton';
 import Button from 'flarum/components/Button';
 
-app.initializers.add(`nomiscz/${config.package.name}`, () => {
+app.initializers.add(`hehongyuanlove/${config.package.name}`, () => {
 
     extend(SettingsPage.prototype, 'accountItems', (items) => {
         const {
@@ -31,10 +31,11 @@ app.initializers.add(`nomiscz/${config.package.name}`, () => {
                 {app.translator.trans(`${config.module.name}.forum.buttons.${isLinked ? 'unlink' : 'link'}`)}
             </Button>
         );
+        console.log(`${config.module.name}.forum.buttons.${isLinked ? 'unlink' : 'link'}`)
     });
 
     extend(LogInButtons.prototype, 'items', (items) => {
-        items.add(config.package.id,
+        items.add(config.module.id,
             <LogInButton
                 className={`Button LogInButton--${config.module.id}`}
                 icon={config.module.icon}

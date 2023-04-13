@@ -70,6 +70,7 @@ export default class UnlinkModal extends Modal {
 
         setTimeout(() => {
             app.alerts.dismiss(alert);
+            m.redraw();
         }, 5000);
     }
 }

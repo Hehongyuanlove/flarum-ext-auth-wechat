@@ -1,11 +1,11 @@
 export default {
   module: {
-    name: 'nomiscz-auth-wechat',
-    id: 'WeChatAuth',
+    name: 'hehongyuanlove-auth-wechat',
+    id: 'hehongyuanlove-WeChatAuth',
     icon: 'fab fa-weixin'
   },
   package: {
-    name: 'flarum-ext-auth-wechat'
+    name: 'hehongyuanlove-auth-wechat'
   },
   api: {
     uri: '/auth/wechat'

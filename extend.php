@@ -1,21 +1,13 @@
 <?php
 
-/*
- * This file is part of nomiscz/flarum-ext-auth-wechat.
- *
- * Copyright (c) 2021 NomisCZ.
- *
- * For the full copyright and license information, please view the LICENSE.md
- * file that was distributed with this source code.
- */
 
-namespace NomisCZ\WeChatAuth;
+namespace Hehongyuanlove\WeChatAuth;
 
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Extend;
-use NomisCZ\WeChatAuth\Http\Controllers\WeChatAuthController;
-use NomisCZ\WeChatAuth\Api\Controllers\WeChatLinkController;
-use NomisCZ\WeChatAuth\Api\Controllers\WeChatUnlinkController;
+use Hehongyuanlove\WeChatAuth\Http\Controllers\WeChatAuthController;
+use Hehongyuanlove\WeChatAuth\Api\Controllers\WeChatLinkController;
+use Hehongyuanlove\WeChatAuth\Api\Controllers\WeChatUnlinkController;
 use FoF\Components\Extend\AddFofComponents;
 
 return [

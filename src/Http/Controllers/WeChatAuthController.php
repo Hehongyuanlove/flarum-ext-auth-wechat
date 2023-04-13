@@ -1,19 +1,13 @@
 <?php
 
-/*
- * This file is part of nomiscz/flarum-ext-auth-wechat.
- *
- * Copyright (c) 2021 NomisCZ.
- *
- * For the full copyright and license information, please view the LICENSE.md
- * file that was distributed with this source code.
- */
 
-namespace NomisCZ\WeChatAuth\Http\Controllers;
+
+namespace Hehongyuanlove\WeChatAuth\Http\Controllers;
 
 use Exception;
 use Flarum\Forum\Auth\Registration;
 use Flarum\Forum\Auth\ResponseFactory;
+use Illuminate\Support\Str;
 use Flarum\Http\UrlGenerator;
 use Flarum\Settings\SettingsRepositoryInterface;
 use NomisCZ\OAuth2\Client\Provider\WeChat;
@@ -26,7 +20,7 @@ use Laminas\Diactoros\Response\RedirectResponse;
 class WeChatAuthController implements RequestHandlerInterface
 {
     /**
-     * @var ResponseFactory
+     * @var WeChatResponseFactory
      */
     protected $response;
     /**
@@ -38,11 +32,11 @@ class WeChatAuthController implements RequestHandlerInterface
      */
     protected $url;
     /**
-     * @param ResponseFactory $response
+     * @param WeChatResponseFactory $response
      * @param SettingsRepositoryInterface $settings
      * @param UrlGenerator $url
      */
-    public function __construct(ResponseFactory $response, SettingsRepositoryInterface $settings, UrlGenerator $url)
+    public function __construct(WeChatResponseFactory $response, SettingsRepositoryInterface $settings, UrlGenerator $url)
     {
         $this->response = $response;
         $this->settings = $settings;
@@ -58,8 +52,8 @@ class WeChatAuthController implements RequestHandlerInterface
         $redirectUri = $this->url->to('forum')->route('auth.wechat');
 
         $provider = new WeChat([
-            'appid' => $this->settings->get('flarum-ext-auth-wechat.app_id'),
-            'secret' => $this->settings->get('flarum-ext-auth-wechat.app_secret'),
+            'appid' => $this->settings->get('hehongyuanlove-auth-wechat.app_id'),
+            'secret' => $this->settings->get('hehongyuanlove-auth-wechat.app_secret'),
             'redirect_uri' => $redirectUri,
         ]);
 
@@ -89,9 +83,18 @@ class WeChatAuthController implements RequestHandlerInterface
         return $this->response->make(
             'wechat',
             $user->getId(),
+            $request->getAttribute('actor'),
             function (Registration $registration) use ($user) {
+                $username = $this->RandomUserName();
+                $random_email = $username. "@xxxxx.cn";
+                $nickname     = $this->UserNameMatch($user->getNickname()) . str::upper(str::random(4));
+
                 $registration
-                    ->suggestUsername($user->getNickname())
+                    ->provide("username", $username)
+                    ->provide("nickname", $nickname)
+                    ->provide("email", $random_email)
+                    ->provide("is_email_confirmed", 1)
+                    ->provide("password", $random_email)
                     ->setPayload($user->toArray());
 
                 if ($user->getHeadImgUrl()) {
@@ -99,5 +102,18 @@ class WeChatAuthController implements RequestHandlerInterface
                 }
             }
         );
+    }
+
+    public function UserNameMatch($str)
+    {
+        preg_match_all('/[\x{4e00}-\x{9fa5}a-zA-Z0-9]/u', $str, $result);
+        return implode('', $result[0]);
+    }
+
+    public function RandomUserName()
+    {
+        $timestamp = date('YmdHis'); // 生成与当前时间相关的字符串
+        $random = substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyz_-', 5)), 0, 10); // 生成长度为 10 的随机字符串
+        return $random . $timestamp ; // 将两个字符串拼接起来
     }
 }

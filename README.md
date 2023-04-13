@@ -1,4 +1,4 @@
-# NomisCZ WeChat Login
+# Hehongyuanlove WeChat Login
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 

@@ -1,15 +1,8 @@
 <?php
 
-/*
- * This file is part of nomiscz/flarum-ext-auth-wechat.
- *
- * Copyright (c) 2021 NomisCZ.
- *
- * For the full copyright and license information, please view the LICENSE.md
- * file that was distributed with this source code.
- */
 
-namespace NomisCZ\WeChatAuth\Api\Controllers;
+
+namespace Hehongyuanlove\WeChatAuth\Api\Controllers;
 
 use NomisCZ\OAuth2\Client\Provider\WeChat;
 use NomisCZ\OAuth2\Client\Provider\WeChatResourceOwner;
@@ -64,8 +57,8 @@ class WeChatLinkController implements RequestHandlerInterface
         $redirectUri = $this->url->to('api')->route('auth.wechat.api.link');
 
         $provider = new WeChat([
-            'appid' => $this->settings->get('flarum-ext-auth-wechat.app_id'),
-            'secret' => $this->settings->get('flarum-ext-auth-wechat.app_secret'),
+            'appid' => $this->settings->get('hehongyuanlove-auth-wechat.app_id'),
+            'secret' => $this->settings->get('hehongyuanlove-auth-wechat.app_secret'),
             'redirect_uri' => $redirectUri,
         ]);
 

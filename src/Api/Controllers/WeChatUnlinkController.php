@@ -1,15 +1,7 @@
 <?php
 
-/*
- * This file is part of nomiscz/flarum-ext-auth-wechat.
- *
- * Copyright (c) 2021 NomisCZ.
- *
- * For the full copyright and license information, please view the LICENSE.md
- * file that was distributed with this source code.
- */
 
-namespace NomisCZ\WeChatAuth\Api\Controllers;
+namespace Hehongyuanlove\WeChatAuth\Api\Controllers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
