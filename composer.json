@@ -1,6 +1,6 @@
 {
   "name": "hehongyuanlove/flarum-auth-wechat",
-  "description": "Allow users to log in with WeChat /n 允许用户使用微信登录",
+  "description": "Allow users to log in with WeChat",
   "version": "2.0.0",
   "keywords": [
     "flarum",

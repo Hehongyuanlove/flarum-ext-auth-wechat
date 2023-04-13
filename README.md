@@ -6,10 +6,10 @@ A [Flarum](http://flarum.org) extension. Allow users to log in with WeChat
 
 ### 说明
 - 此插件是基于需求魔改的，原插件： nomiscz/flarum-ext-auth-wechat
-- 注册后 自动生成 XXX+随机+@xxx.com 作为邮箱，没有做邮箱的重复性检查，所以可能会有重复的邮箱
+- 注册后 自动生成 随机+@xxx.com 作为邮箱，没有做邮箱的重复性检查，所以可能会有重复的邮箱
 - 注册后 密码与邮箱相同
 - 注册后 自动通过邮箱验证
-- 注册后 用户名与昵称相同 (同样有中文名问题)
+- 注册后 用户名为随机生成的字符串
 
 ### Installation
 
